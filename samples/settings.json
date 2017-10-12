@@ -1,0 +1,16 @@
+{
+
+    //http配置
+    "http": {
+        "port": 8085,
+        "logon": "/logon" //登录页地址
+    },
+
+    //session配置
+    "session": {
+        "timeout": 20,              //session过期时间(分钟)
+        "type": "redis",            //使用redis缓存作为session保存方式
+        "server": "127.0.0.1:8885"  //redis服务地址
+    }
+
+}

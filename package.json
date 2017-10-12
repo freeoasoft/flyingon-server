@@ -1,0 +1,15 @@
+{
+  "name": "flyingon-server",
+  "version": "1.0.0",
+  "description": "flyingon-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "flyingon-server"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fs-await": "^1.0.3",
+    "redis": "^2.8.0"
+  }
+}
