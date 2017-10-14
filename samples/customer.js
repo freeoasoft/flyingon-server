@@ -5,25 +5,31 @@ module.exports = class extends app.Handler {
 
     async GET(context, next) {
 
-        context.send('json', {});
+        context.body = {};
     };
 
     
     async POST(context, next) {
 
-        context.send('json', {});
+        let value = await this.acceptData(context);
+
+        context.body = value;
     };
 
     
     async PUT(context, next) {
+        
+        let value = await this.acceptData(context);
 
-        context.send('json', {});
+        context.body = value;
     };
 
 
     async DELETE(context, next) {
 
-        context.send('json', {});
+        let value = await this.acceptData(context);
+
+        context.body = value;
     };
 
 };
