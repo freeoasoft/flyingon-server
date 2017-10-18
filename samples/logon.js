@@ -1,36 +1,32 @@
-const app = require('../lib');
+let date = new Date().toGMTString();
 
 
-module.exports = class extends app.Handler {
 
+module.exports = async (context, next) => {
+            
+    await context.session.create({ a: 1, b: 2 });
 
-    async execute(context, next) {
+    if (context.lastModified === date)
+    {
+        context.send(304);
+    }
+    else
+    {
+        let permisions = {};
 
-        await context.session.create({ a: 1, b: 2 });
+        for (let i = 1; i < 1000; i++)
+        {
+            permisions['p' + i] = ['ABCD', 1, 'DEFG', 2];
+        }
 
-        let value = await context.session.get('a');
-
-        await context.session.set('a', 'ddd');
-
-        value = await context.session.get('a');
-
-        await context.session.remove('a');
-
-        value = await context.session.get('a');
-
-
-        
         context.body = {
             user: 'test',
             language: 'zh',
-            permisions: {
-                a: '1212',
-                b: '1212'
-            }
+            permisions: permisions
         };
-        
-        await next();
-    };
 
+        context.lastModified = date;
+    }
     
+    await next();
 };

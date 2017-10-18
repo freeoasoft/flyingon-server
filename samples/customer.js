@@ -1,35 +1,46 @@
-const app = require('../lib');
-
-module.exports = class extends app.Handler {
+const methods = Object.create(null);
 
 
-    async GET(context, next) {
+methods.GET = async (context, next) => {
 
-        context.body = {};
-    };
+    context.body = {};
+};
 
+
+methods.POST = async (context, next) => {
+
+    let value = await context.acceptData(context);
+
+    context.body = value;
+};
+
+
+methods.PUT = async (context, next) => {
     
-    async POST(context, next) {
+    let value = await context.acceptData(context);
 
-        let value = await this.acceptData(context);
-
-        context.body = value;
-    };
-
-    
-    async PUT(context, next) {
-        
-        let value = await this.acceptData(context);
-
-        context.body = value;
-    };
+    context.body = value;
+};
 
 
-    async DELETE(context, next) {
+methods.DELETE = async (context, next) => {
 
-        let value = await this.acceptData(context);
+    let value = await context.acceptData(context);
 
-        context.body = value;
-    };
+    context.body = value;
+};
 
+
+module.exports = async (context, next) => {
+
+    let fn = methods[context.request.method];
+
+    if (fn)
+    {
+        await fn.call(this, context, next);
+    }
+    else
+    {
+        context.send(405);
+    }
 };

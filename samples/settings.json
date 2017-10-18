@@ -3,18 +3,37 @@
     //http配置
     "http": {
         "port": 8085,
-        "logon": "/logon" //登录页地址
+        "logon": "/logon"           //登录页地址
     },
 
     //session配置
     "session": {
-        "timeout": 20,       //session过期时间(分钟)
-        "cache": 1000,       //本地缓存最大数量
-        "type": "redis",     //使用redis缓存作为session保存方式
-        "redis": {           //redis配置
-            "host": "127.0.0.1",
-            "port": 6379,
-            "options": {}
+        "timeout": 20,              //session过期时间(分钟)
+        "max": 1000,                //本地最大缓存数量
+        "cache": "redis",           //使用redis缓存作为session保存方式
+        "redis": {                  //redis配置
+            "host": "127.0.0.1",    //redis地址
+            "port": 6379,           //redis端口
+            "pool": 2               //开启两个redis客户端
+        }
+    },
+
+    //数据库配置
+    "database": {
+        "type": "postgresql",
+        "options": {                    //postgresql参数
+            "user": "postgres",
+            "database": "test",
+            "password": "123456",
+            "port": 5432,
+            "max": 20,                  //连接池最大连接数
+            "idleTimeoutMillis": 3000   //连接最大空闲时间 3s
+        },
+        "cache": "redis",               //使用redis缓存作为session保存方式
+        "redis": {                      //redis配置
+            "host": "127.0.0.1",        //redis地址
+            "port": 6379,               //redis端口
+            "pool": 2                   //开启两个redis客户端
         }
     }
 
