@@ -1,6 +1,6 @@
 {
   "name": "flyingon-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "flyingon-server",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
   "dependencies": {
     "bunyan": "^1.8.12",
     "fs-await": "^1.0.3",
+    "mysql": "^2.15.0",
     "pg": "^7.3.0",
-    "redis-await": "^1.0.0"
+    "redis-await": "^1.0.1"
   }
 }

@@ -2,14 +2,14 @@
 
     //http配置
     "http": {
-        "port": 8085,
-        "logon": "/logon"           //登录页地址
+        "port": 8085
     },
 
     //session配置
     "session": {
         "timeout": 20,              //session过期时间(分钟)
         "max": 1000,                //本地最大缓存数量
+        "redirectUrl": "/logon",    //session校验不通过时重定向地址
         "cache": "redis",           //使用redis缓存作为session保存方式
         "redis": {                  //redis配置
             "host": "127.0.0.1",    //redis地址
@@ -20,8 +20,8 @@
 
     //数据库配置
     "database": {
-        "type": "postgresql",
-        "options": {                    //postgresql参数
+        "type": "mysql",           //数据库类型
+        "postgresql": {                 //postgresql参数
             "user": "postgres",
             "database": "test",
             "password": "123456",
@@ -29,7 +29,14 @@
             "max": 20,                  //连接池最大连接数
             "idleTimeoutMillis": 3000   //连接最大空闲时间 3s
         },
-        "cache": "redis",               //使用redis缓存作为session保存方式
+        "mysql": {                      //mysql参数
+            "connectionLimit": 10,
+            "host": "127.0.0.1",
+            "user": "root",
+            "password": "123456",
+            "database": "test"
+        },
+        "cache": "redis",               //使用redis缓存作为查询缓存
         "redis": {                      //redis配置
             "host": "127.0.0.1",        //redis地址
             "port": 6379,               //redis端口

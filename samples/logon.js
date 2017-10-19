@@ -4,7 +4,7 @@ let date = new Date().toGMTString();
 
 module.exports = async (context, next) => {
             
-    await context.session.create({ a: 1, b: 2 });
+    await context.session.create({ a: 1, b: '' });
 
     if (context.lastModified === date)
     {
