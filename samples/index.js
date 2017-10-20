@@ -17,6 +17,7 @@ const app = new App(settings);
 let sqlclient;
 
 
+
 //设置全局插件
 app.use(gzip);
 
