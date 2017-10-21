@@ -4,7 +4,13 @@ GET(`select * from test${
     WHERE(IIF('{#0}', 'f1={#0}?', ''))
 }`);
 
-POST(`insert into test(${ FOR('@', '{name}') }) values(${ FOR('@', '{value}?') })`);
+POST(`insert into test(${ FOR('@', '{name}') }) values(${ FOR('@', '{value}?') }) ${
+
+    TYPE({
+        postgresql: 'returning id'
+    })
+
+}`);
 
 PUT(`update test set ${ FOR('@', '{name}={value}?') } where f1={#0}?`);
 
