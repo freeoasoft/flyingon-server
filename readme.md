@@ -35,7 +35,7 @@ DELETE('delete from test where f1={#0}?');
 ```
 
 ## 系统配置
-```json
+```javascript
 {
     //http配置
     "http": {
