@@ -156,8 +156,7 @@ console.log('http server listening at port', settings.http.port);
 ```
 
 ## 插件
-注册的插件方法必须符合"async (context, next)"签名, 其中context为当前上次文, next为下一个插件调用方法
-以下为gzip压缩插件示例:
+注册的插件方法必须符合"async (context, next)"签名, 其中context为当前上次文, next为下一个插件调用方法, 以下为gzip压缩插件示例:
 
 ```javascript
 const zlib = require('zlib');
