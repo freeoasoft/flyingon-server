@@ -22,9 +22,9 @@ let sqlclient;
 app.use(gzip);
 
 
-app.route('/logon', false, require('./logon')); //不检测session
+app.route('/logon', 0, require('./logon')); //不检测session
 
-app.route('/customer', cache, require('./customer'));
+app.route('/customer', 1, cache, require('./customer'));
 
 
 //创建数据库客户端
